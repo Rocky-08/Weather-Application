@@ -1,0 +1,58 @@
+let $7e7826c51b2a67966a0c063b231575d8$var$APIKEY = 'GhjzvpwsSzI3I43LRMeb68IakSLm3v74dqxHqik5';
+let $7e7826c51b2a67966a0c063b231575d8$var$APIURL = `api.openweathermap.org/data/2.5/weather?q=Delhi&appid=43906d27394468badebd5d1199295256`;
+let $7e7826c51b2a67966a0c063b231575d8$var$newWeather = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=43906d27394468badebd5d1199295256';
+let $7e7826c51b2a67966a0c063b231575d8$var$api = '43906d27394468badebd5d1199295256';
+/* let city = document.querySelector('.city')
+ */ let $7e7826c51b2a67966a0c063b231575d8$var$weatherNews = document.querySelector('.weather');
+let $7e7826c51b2a67966a0c063b231575d8$var$desc = document.querySelector('.desc');
+let $7e7826c51b2a67966a0c063b231575d8$var$information = document.querySelector('.info');
+let $7e7826c51b2a67966a0c063b231575d8$var$icon = document.querySelector('.icon');
+let $7e7826c51b2a67966a0c063b231575d8$var$search = document.querySelector('.search');
+let $7e7826c51b2a67966a0c063b231575d8$var$box = document.querySelector('.box');
+let $7e7826c51b2a67966a0c063b231575d8$var$icons = function(data) {
+    if (data.weather[0].description == 'clear sky') {
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.add('clear');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('snow');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('scattered');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('broken');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('container');
+    } else if (data.weather[0].description == 'scattered clouds') {
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.add('scattered');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('broken');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('container');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('clear');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('snow');
+    } else if (data.weather[0].description == 'broken clouds') {
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.add('broken');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('container');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('clear');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('snow');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('scattered');
+    } else if (data.weather[0].description == 'snow') {
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.add('snow');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('scattered');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('broken');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('container');
+        $7e7826c51b2a67966a0c063b231575d8$var$box.classList.remove('clear');
+    } else $7e7826c51b2a67966a0c063b231575d8$var$box.classList.add('container');
+};
+let $7e7826c51b2a67966a0c063b231575d8$var$info = function(data) {
+    $7e7826c51b2a67966a0c063b231575d8$var$information.innerHTML = '';
+    let html = `\n    \n\n    <div class="city">\n       Weather in ${data.name}\n    </div>\n      \n     <div class="weather">\n        \n       ${(data.main.temp - 273).toFixed(2)}°C\n\n     </div>\n\n     <div class="desc">\n     \n            <h2>  ${data.weather[0].description}</h2>\n        <h3 class="humidity">Humidity : ${data.main.humidity}%</h3>    \n        <h3 class="wind">Wind : ${data.wind.speed} km/h</h3>    \n\n     </div>\n    \n   `;
+    $7e7826c51b2a67966a0c063b231575d8$var$icons(data);
+    console.log(html);
+    $7e7826c51b2a67966a0c063b231575d8$var$information.insertAdjacentHTML('beforeend', html);
+};
+let $7e7826c51b2a67966a0c063b231575d8$var$weather = async function(city) {
+    let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=43906d27394468badebd5d1199295256`);
+    console.log(res);
+    let resData = await res.json();
+    console.log(resData);
+    $7e7826c51b2a67966a0c063b231575d8$var$info(resData);
+};
+$7e7826c51b2a67966a0c063b231575d8$var$icon.addEventListener('click', function() {
+    /* e.preventDefault(); */ let city = $7e7826c51b2a67966a0c063b231575d8$var$search.value;
+    $7e7826c51b2a67966a0c063b231575d8$var$search.value = '';
+    console.log(city);
+    $7e7826c51b2a67966a0c063b231575d8$var$weather(city);
+});

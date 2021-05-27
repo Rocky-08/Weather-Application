@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+   <link rel="stylesheet" href="989bd40690a8b825b2db35b3bf512629">
+   <link rel="stylesheet" href="348db4dab14dafa80f7d9d4bc4a812d3">
+    
+   <script async="" src="0b86166c9ab3a121941fbc62c3b65a21"></script>
+</head>
+<body>
+            <div class="container box">
+                 <h2 class="main">Weather Application</h2>
+
+                <div class="information">
+                    
+                    
+                    <input type="text" name="text" class="search" placeholder="Search City">
+                    <i class="fa fa-search icon" style="884ce07b2c52969dd283102d35352d0d"></i>
+                      
+                    
+                             
+                    <i class="fas fa-sun icons" style="e2a64d768a07356b184bdcd37b391334"></i>
+                    <div class="info">
+
+                   <!--  <div class="city">
+
+                    </div>
+                      
+                     <div class="weather">
+
+
+                     </div>
+
+                     <div class="desc">
+
+
+                     </div> -->
+                    </div> 
+
+
+                </div>
+
+            </div>
+</body>
+</html>
